@@ -1,12 +1,14 @@
 
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 
 const EmailForm = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,13 +28,24 @@ const EmailForm = () => {
     setError("");
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Simulate API call - this will be replaced with Airtable form submission later
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
       // This would be replaced with actual API submission code
       console.log("Email submitted:", email);
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 1500);
+      
+      toast({
+        title: "Success!",
+        description: "You've been added to our waitlist.",
+      });
+    } catch (error) {
+      console.error("Submission error:", error);
+      setIsSubmitting(false);
+      setError("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -100,11 +113,11 @@ const EmailForm = () => {
           </p>
         </form>
       ) : (
-        <div className="text-center space-y-3 py-6 px-8 bg-secondary/50 rounded-md border border-border/50 animate-fade-in">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-2">
+        <div className="text-center space-y-4 py-8 px-8 bg-secondary/50 rounded-md border border-border/50 animate-fade-in">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="h-8 w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -117,9 +130,9 @@ const EmailForm = () => {
               />
             </svg>
           </div>
-          <h3 className="text-lg font-medium">Thank you!</h3>
-          <p className="text-sm text-muted-foreground">
-            You're now on our waitlist. We'll notify you when we're ready.
+          <h3 className="text-xl font-medium">Thanks for signing up!</h3>
+          <p className="text-base text-muted-foreground">
+            We'll be in touch soon.
           </p>
         </div>
       )}
