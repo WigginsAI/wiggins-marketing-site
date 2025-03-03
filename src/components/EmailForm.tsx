@@ -1,0 +1,130 @@
+
+import React, { useState } from "react";
+import { cn } from "@/lib/utils";
+
+const EmailForm = () => {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      setError("Please enter your email address");
+      return;
+    }
+    
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+    
+    setError("");
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      // This would be replaced with actual API submission code
+      console.log("Email submitted:", email);
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }, 1500);
+  };
+
+  return (
+    <div className="w-full max-w-md mx-auto">
+      {!submitted ? (
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="relative">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className={cn(
+                "w-full px-4 py-3 bg-secondary/50 rounded-md border focus:ring-2 focus:ring-primary/30 outline-none transition-all duration-200",
+                error ? "border-red-500/50" : "border-border/50",
+                "placeholder:text-muted-foreground text-sm"
+              )}
+              disabled={isSubmitting}
+            />
+            {error && (
+              <p className="text-red-400 text-xs mt-1 ml-1 absolute">
+                {error}
+              </p>
+            )}
+          </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={cn(
+              "w-full py-3 rounded-md font-medium text-sm transition-all duration-200",
+              "bg-primary text-white hover:bg-primary/90 focus:ring-2 focus:ring-primary/30 focus:outline-none",
+              isSubmitting && "opacity-70 cursor-not-allowed"
+            )}
+          >
+            {isSubmitting ? (
+              <div className="flex items-center justify-center">
+                <svg
+                  className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                Processing...
+              </div>
+            ) : (
+              "Join the Waitlist"
+            )}
+          </button>
+          <p className="text-xs text-center text-muted-foreground pt-2">
+            We respect your privacy. Unsubscribe at any time.
+          </p>
+        </form>
+      ) : (
+        <div className="text-center space-y-3 py-6 px-8 bg-secondary/50 rounded-md border border-border/50 animate-fade-in">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </div>
+          <h3 className="text-lg font-medium">Thank you!</h3>
+          <p className="text-sm text-muted-foreground">
+            You're now on our waitlist. We'll notify you when we're ready.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default EmailForm;

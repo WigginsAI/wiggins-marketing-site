@@ -1,0 +1,69 @@
+
+import React from "react";
+
+const AnimatedBackground = () => {
+  return (
+    <div className="fixed inset-0 -z-10 overflow-hidden">
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 grid-pattern opacity-20 animate-grid-line"></div>
+      
+      {/* Gradient Orbs */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full filter blur-[100px] animate-pulse-slow"></div>
+      <div className="absolute top-1/2 -right-32 w-96 h-96 bg-blue-400/5 rounded-full filter blur-[100px] animate-pulse-slow" style={{ animationDelay: "2s" }}></div>
+      <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-indigo-500/5 rounded-full filter blur-[80px] animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
+      
+      {/* Animated Lines */}
+      <svg width="100%" height="100%" className="absolute inset-0 opacity-20">
+        <defs>
+          <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#60A5FA" stopOpacity="0" />
+            <stop offset="50%" stopColor="#60A5FA" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#60A5FA" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <line
+          x1="-100"
+          y1="20%"
+          x2="100%"
+          y2="20%"
+          stroke="url(#lineGradient)"
+          strokeWidth="1"
+          className="animate-pulse-slow"
+          style={{ animationDelay: "0s" }}
+        />
+        <line
+          x1="-100"
+          y1="60%"
+          x2="100%"
+          y2="60%"
+          stroke="url(#lineGradient)"
+          strokeWidth="1"
+          className="animate-pulse-slow"
+          style={{ animationDelay: "2s" }}
+        />
+        <line
+          x1="20%"
+          y1="-100"
+          x2="20%"
+          y2="100%"
+          stroke="url(#lineGradient)"
+          strokeWidth="1"
+          className="animate-pulse-slow"
+          style={{ animationDelay: "1s" }}
+        />
+        <line
+          x1="80%"
+          y1="-100"
+          x2="80%"
+          y2="100%"
+          stroke="url(#lineGradient)"
+          strokeWidth="1"
+          className="animate-pulse-slow"
+          style={{ animationDelay: "3s" }}
+        />
+      </svg>
+    </div>
+  );
+};
+
+export default AnimatedBackground;
