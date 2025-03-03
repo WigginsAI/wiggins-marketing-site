@@ -35,27 +35,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        <nav className="hidden md:flex space-x-8">
-          <a
-            href="#about"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            About
-          </a>
-          <a
-            href="#features"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Features
-          </a>
-          <a
-            href="#contact"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Contact
-          </a>
-        </nav>
-
         <div>
           <button className="bg-primary/10 hover:bg-primary/20 text-primary text-sm px-4 py-2 rounded-md transition-colors duration-200">
             Early Access
