@@ -92,7 +92,7 @@ const EmailForm = () => {
                 Processing...
               </div>
             ) : (
-              "Join the Waitlist"
+              "Apply for Early Access"
             )}
           </button>
           <p className="text-xs text-center text-muted-foreground pt-2">
