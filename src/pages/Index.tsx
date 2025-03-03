@@ -171,7 +171,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <div className="text-xl font-semibold tracking-tight">
-                <span className="text-gradient">Nexus</span>
+                <span className="text-gradient">WiggsAI</span>
               </div>
             </div>
             
@@ -190,7 +190,7 @@ const Index = () => {
           
           <div className="mt-6 text-center md:text-left">
             <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} Nexus Technologies. All rights reserved.
+              © {new Date().getFullYear()} WiggsAI Technologies. All rights reserved.
             </p>
           </div>
         </div>

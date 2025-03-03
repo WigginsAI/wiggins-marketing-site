@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <div className="text-xl font-semibold tracking-tight">
-            <span className="text-gradient">Nexus</span>
+            <span className="text-gradient">WiggsAI</span>
           </div>
         </div>
 
