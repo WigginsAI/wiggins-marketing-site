@@ -45,16 +45,6 @@ const Index = () => {
       <div className="flex-grow flex items-center justify-center px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-6 max-w-4xl mx-auto">
-            <div 
-              className="inline-block mb-3 px-4 py-1.5 rounded-full bg-secondary/80 text-sm font-medium border border-border/50 opacity-0" 
-              data-animate 
-              data-delay="100"
-            >
-              <span className="text-primary">Coming Soon</span>
-              <span className="mx-2 text-muted-foreground">•</span>
-              <span className="text-muted-foreground">Join our private beta</span>
-            </div>
-            
             <h1 
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight md:leading-tight opacity-0" 
               data-animate 
