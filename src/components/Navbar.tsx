@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import ContactModal from "./ContactModal";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,12 +38,13 @@ const Navbar = () => {
         </div>
         
         <div className="flex items-center">
-          <a 
-            href="#" 
+          <button 
+            onClick={() => setContactOpen(true)}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             Contact
-          </a>
+          </button>
+          <ContactModal open={contactOpen} onOpenChange={setContactOpen} />
         </div>
       </div>
     </header>
