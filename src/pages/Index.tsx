@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import EmailForm from "@/components/EmailForm";
@@ -86,12 +85,6 @@ const Index = () => {
             </div>
             
             <div className="flex space-x-6">
-              <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Terms of Service
-              </a>
               <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                 Contact
               </a>
