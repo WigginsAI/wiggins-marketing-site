@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import EmailForm from "@/components/EmailForm";
@@ -99,7 +100,7 @@ const Index = () => {
           
           <div className="mt-6 text-center md:text-left">
             <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} WiggsAI Technologies. All rights reserved.
+              © {new Date().getFullYear()} WiggsAI. All rights reserved.
             </p>
           </div>
         </div>
