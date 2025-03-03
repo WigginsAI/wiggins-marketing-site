@@ -62,9 +62,9 @@ const Index = () => {
               data-animate 
               data-delay="200"
             >
-              The next frontier of
+              Reinventing how teams
               <br />
-              <span className="text-gradient">innovation is here</span>
+              <span className="text-gradient">uncover customer insights</span>
             </h1>
             
             <p 
