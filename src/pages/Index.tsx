@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import EmailForm from "@/components/EmailForm";
@@ -71,8 +70,7 @@ const Index = () => {
               data-animate 
               data-delay="300"
             >
-              We're crafting a revolutionary platform that will transform how you interact with technology.
-              Early access available for a limited time.
+              Helping SaaS &amp; B2B teams uncover product opportunities from customer calls.
             </p>
             
             <div 
