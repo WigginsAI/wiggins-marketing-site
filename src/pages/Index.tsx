@@ -85,9 +85,6 @@ const Index = () => {
             </div>
             
             <div className="flex space-x-6">
-              <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Contact
-              </a>
             </div>
           </div>
           

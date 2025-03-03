@@ -34,6 +34,15 @@ const Navbar = () => {
             <span className="text-gradient">WiggsAI</span>
           </div>
         </div>
+        
+        <div className="flex items-center">
+          <a 
+            href="#" 
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Contact
+          </a>
+        </div>
       </div>
     </header>
   );
