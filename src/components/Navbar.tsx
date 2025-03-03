@@ -34,12 +34,6 @@ const Navbar = () => {
             <span className="text-gradient">WiggsAI</span>
           </div>
         </div>
-
-        <div>
-          <button className="bg-primary/10 hover:bg-primary/20 text-primary text-sm px-4 py-2 rounded-md transition-colors duration-200">
-            Early Access
-          </button>
-        </div>
       </div>
     </header>
   );
