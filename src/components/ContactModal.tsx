@@ -179,7 +179,7 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
               <div className="mt-4">
                 <iframe 
                   className="airtable-embed" 
-                  src="https://airtable.com/embed/your-form-link" 
+                  src="https://airtable.com/embed/appSdk9KtDUQAbwLK/pagJmBniXkdvYj6rl/form" 
                   frameBorder="0" 
                   width="100%" 
                   height="533" 
