@@ -61,7 +61,7 @@ const Index = () => {
               data-animate 
               data-delay="414"
             >
-              Helping B2B teams build products customers actually want.
+              Helping B2B teams build products their customers actually want.
             </p>
             
             <div 
