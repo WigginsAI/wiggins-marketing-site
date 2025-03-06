@@ -175,16 +175,6 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
               <p className="text-base text-muted-foreground mb-4">
                 We'll get back to you shortly.
               </p>
-              
-              <div className="mt-6">
-                <iframe 
-                  src="https://airtable.com/embed/appSdk9KtDUQAbwLK/pagJmBniXkdvYj6rl/form" 
-                  width="100%" 
-                  height="350" 
-                  style={{ background: "transparent", border: "none" }}
-                  title="Airtable form"
-                ></iframe>
-              </div>
             </div>
           )}
         </div>

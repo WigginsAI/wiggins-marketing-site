@@ -141,16 +141,6 @@ const EmailForm = () => {
           <p className="text-base text-muted-foreground">
             We'll be in touch soon.
           </p>
-          
-          <div className="mt-6">
-            <iframe 
-              src="https://airtable.com/embed/appSdk9KtDUQAbwLK/pagJmBniXkdvYj6rl/form" 
-              width="100%" 
-              height="350" 
-              style={{ background: "transparent", border: "none" }}
-              title="Airtable form"
-            ></iframe>
-          </div>
         </div>
       )}
     </div>
