@@ -131,7 +131,7 @@ const EmailForm = () => {
           {/* Airtable Embed */}
           <div className="mt-6">
             <iframe
-              src="https://airtable.com/embed/your-form-link" // Replace with your Airtable form link
+              src="https://airtable.com/embed/appSdk9KtDUQAbwLK/pagn00JEca1cv7mur/form"
               width="100%"
               height="400"
               style={{ background: "transparent", border: "none" }}
