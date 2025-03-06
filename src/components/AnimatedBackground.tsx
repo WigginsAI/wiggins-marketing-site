@@ -4,6 +4,16 @@ import React from "react";
 const AnimatedBackground = () => {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
+      {/* Textured Background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1a1f2c]/30 via-background/80 to-background"></div>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-br from-fuchsia-900/10 via-purple-800/5 to-transparent"></div>
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-indigo-900/10 via-violet-800/5 to-transparent"></div>
+        </div>
+        <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-soft-light"></div>
+      </div>
+      
       {/* Grid Pattern */}
       <div className="absolute inset-0 grid-pattern opacity-20 animate-grid-line"></div>
       
