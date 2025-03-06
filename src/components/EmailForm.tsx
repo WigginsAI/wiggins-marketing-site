@@ -59,11 +59,9 @@ const EmailForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className={cn(
-                "w-full px-4 py-3 bg-secondary/50 rounded-md outline-none transition-all duration-200",
-                "border-2", // Changed from border to border-2 for more thickness
-                error ? "border-red-500/50" : "border-gray-600", // Changed from border-border/50 to border-gray-600 for more contrast
-                "placeholder:text-muted-foreground text-sm",
-                "focus:border-primary focus:ring-1 focus:ring-primary/20" // Enhanced focus state
+                "w-full px-4 py-3 bg-secondary/50 rounded-md border focus:ring-2 focus:ring-primary/30 outline-none transition-all duration-200",
+                error ? "border-red-500/50" : "border-border/50",
+                "placeholder:text-muted-foreground text-sm"
               )}
               disabled={isSubmitting}
             />
