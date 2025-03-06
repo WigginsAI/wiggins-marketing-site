@@ -61,7 +61,7 @@ const EmailForm = () => {
               className={cn(
                 "w-full px-4 py-3 bg-secondary/50 rounded-md border focus:ring-2 focus:ring-primary/30 outline-none transition-all duration-200",
                 error ? "border-red-500/50" : "border-border/50",
-                "placeholder:text-muted-foreground text-sm"
+                "placeholder:text-[#A0A0A0] placeholder:opacity-100 text-sm"
               )}
               disabled={isSubmitting}
             />
