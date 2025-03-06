@@ -28,7 +28,7 @@ const EmailForm = () => {
     setError("");
     setIsSubmitting(true);
     
-    // Hide the form and show the Airtable embed after a delay
+    // Hide the form and show success message after a delay
     setTimeout(() => {
       console.log("Email submitted:", email);
       setIsSubmitting(false);
@@ -128,16 +128,7 @@ const EmailForm = () => {
             We'll be in touch soon.
           </p>
           
-          {/* Airtable Embed */}
-          <div className="mt-6">
-            <iframe
-              src="https://airtable.com/embed/appSdk9KtDUQAbwLK/pagn00JEca1cv7mur/form"
-              width="100%"
-              height="400"
-              style={{ background: "transparent", border: "none" }}
-              frameBorder="0"
-            ></iframe>
-          </div>
+          {/* Removed Airtable Embed */}
         </div>
       )}
     </div>
