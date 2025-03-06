@@ -28,11 +28,8 @@ const EmailForm = () => {
     setError("");
     setIsSubmitting(true);
     
-    try {
-      // Simulate API call - this will be replaced with Airtable form submission later
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // This would be replaced with actual API submission code
+    // Hide the form and show the Airtable embed after a delay
+    setTimeout(() => {
       console.log("Email submitted:", email);
       setIsSubmitting(false);
       setSubmitted(true);
@@ -41,11 +38,7 @@ const EmailForm = () => {
         title: "Success!",
         description: "You've been added to our waitlist.",
       });
-    } catch (error) {
-      console.error("Submission error:", error);
-      setIsSubmitting(false);
-      setError("Something went wrong. Please try again.");
-    }
+    }, 1500);
   };
 
   return (
@@ -134,6 +127,17 @@ const EmailForm = () => {
           <p className="text-base text-muted-foreground">
             We'll be in touch soon.
           </p>
+          
+          {/* Airtable Embed */}
+          <div className="mt-6">
+            <iframe
+              src="https://airtable.com/embed/your-form-link" // Replace with your Airtable form link
+              width="100%"
+              height="400"
+              style={{ background: "transparent", border: "none" }}
+              frameBorder="0"
+            ></iframe>
+          </div>
         </div>
       )}
     </div>
