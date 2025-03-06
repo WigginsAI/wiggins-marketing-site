@@ -40,7 +40,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <button 
             onClick={() => setContactOpen(true)}
-            className="text-base font-semibold text-muted-foreground hover:text-foreground transition-colors"
+            className="text-base font-medium text-white hover:text-foreground transition-colors font-[500]"
           >
             Contact Us
           </button>
