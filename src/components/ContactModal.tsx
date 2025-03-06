@@ -35,35 +35,36 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
     }));
   };
 
-const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Hide the form and replace it with the Airtable embed
-    setTimeout(() => {
-        console.log("Contact form submitted:", formData);
-        setIsSubmitting(false);
-        setSubmitted(true);
-
-        toast({
-            title: "Message sent",
-            description: "We’ll get back to you shortly.",
-        });
-
-        // Replace the form with Airtable Embed
-        const formContainer = document.getElementById("contactFormContainer");
-        if (formContainer) {
-            formContainer.innerHTML = `<iframe 
-                src="https://airtable.com/embed/appSdk9KtDUQAbwLK/pagJmBniXkdvYj6rl/form" 
-                width="100%" 
-                height="500" 
-                frameborder="0">
-            </iframe>`;
-        }
-
-    }, 1000);
-};
-
+    try {
+      // This would be where you'd make an actual API request to Airtable
+      // For now, we're just simulating the submission
+      console.log("Contact form submitted:", formData);
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setIsSubmitting(false);
+      setSubmitted(true);
+      
+      toast({
+        title: "Message sent",
+        description: "We'll get back to you shortly.",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setIsSubmitting(false);
+      
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -82,7 +83,7 @@ const handleSubmit = (e: React.FormEvent) => {
             Send us a message and we'll get back to you as soon as possible.
           </DialogDescription>
         </DialogHeader>
-        <div className="py-4">
+        <div className="py-4" id="contactFormContainer">
           {!submitted ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
@@ -175,7 +176,15 @@ const handleSubmit = (e: React.FormEvent) => {
                 We'll get back to you shortly.
               </p>
               
-              {/* Removed Airtable Embed */}
+              <div className="mt-6">
+                <iframe 
+                  src="https://airtable.com/embed/appSdk9KtDUQAbwLK/pagJmBniXkdvYj6rl/form" 
+                  width="100%" 
+                  height="350" 
+                  style={{ background: "transparent", border: "none" }}
+                  title="Airtable form"
+                ></iframe>
+              </div>
             </div>
           )}
         </div>
