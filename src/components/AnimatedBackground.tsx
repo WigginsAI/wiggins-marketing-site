@@ -72,6 +72,51 @@ const AnimatedBackground = () => {
           style={{ animationDelay: "3s" }}
         />
       </svg>
+
+      {/* Futuristic Circuit Pattern */}
+      <svg 
+        className="absolute inset-0 w-full h-full opacity-[0.15]" 
+        viewBox="0 0 1000 1000" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g className="animate-pulse-slow" style={{ animationDelay: "2.5s" }}>
+          <circle cx="500" cy="500" r="300" stroke="#9b87f5" strokeWidth="1" fill="none" />
+          <circle cx="500" cy="500" r="200" stroke="#9b87f5" strokeWidth="1" fill="none" />
+          <circle cx="500" cy="500" r="100" stroke="#9b87f5" strokeWidth="0.5" fill="none" />
+          
+          <line x1="200" y1="500" x2="800" y2="500" stroke="#D946EF" strokeWidth="0.5" />
+          <line x1="500" y1="200" x2="500" y2="800" stroke="#D946EF" strokeWidth="0.5" />
+          
+          <circle cx="500" cy="200" r="5" fill="#8B5CF6" />
+          <circle cx="500" cy="800" r="5" fill="#8B5CF6" />
+          <circle cx="200" cy="500" r="5" fill="#8B5CF6" />
+          <circle cx="800" cy="500" r="5" fill="#8B5CF6" />
+          
+          <path d="M300,300 L400,300 L400,400 L300,400 Z" fill="none" stroke="#0EA5E9" strokeWidth="0.5" />
+          <path d="M600,300 L700,300 L700,400 L600,400 Z" fill="none" stroke="#0EA5E9" strokeWidth="0.5" />
+          <path d="M300,600 L400,600 L400,700 L300,700 Z" fill="none" stroke="#0EA5E9" strokeWidth="0.5" />
+          <path d="M600,600 L700,600 L700,700 L600,700 Z" fill="none" stroke="#0EA5E9" strokeWidth="0.5" />
+        </g>
+      </svg>
+      
+      {/* Floating Particles */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white mix-blend-screen"
+            style={{
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.5,
+              animation: `float ${Math.random() * 10 + 10}s linear infinite`,
+              animationDelay: `${Math.random() * 10}s`
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 };
