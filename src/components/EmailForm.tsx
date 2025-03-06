@@ -76,7 +76,7 @@ const EmailForm = () => {
             disabled={isSubmitting}
             className={cn(
               "w-full py-3 rounded-md font-medium text-sm transition-all duration-200",
-              "bg-primary text-white hover:bg-primary/90 focus:ring-2 focus:ring-primary/30 focus:outline-none",
+              "bg-[#6E3AFF] text-white hover:bg-[#6E3AFF]/90 focus:ring-2 focus:ring-[#6E3AFF]/30 focus:outline-none",
               isSubmitting && "opacity-70 cursor-not-allowed"
             )}
           >
