@@ -35,22 +35,35 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
+    // Hide the form and replace it with the Airtable embed
     setTimeout(() => {
-      console.log("Contact form submitted:", formData);
-      setIsSubmitting(false);
-      setSubmitted(true);
-      
-      toast({
-        title: "Message sent",
-        description: "We'll get back to you shortly.",
-      });
+        console.log("Contact form submitted:", formData);
+        setIsSubmitting(false);
+        setSubmitted(true);
+
+        toast({
+            title: "Message sent",
+            description: "We’ll get back to you shortly.",
+        });
+
+        // Replace the form with Airtable Embed
+        const formContainer = document.getElementById("contactFormContainer");
+        if (formContainer) {
+            formContainer.innerHTML = `<iframe 
+                src="https://airtable.com/embed/appSdk9KtDUQAbwLK/pagJmBniXkdvYj6rl/form" 
+                width="100%" 
+                height="500" 
+                frameborder="0">
+            </iframe>`;
+        }
+
     }, 1000);
-  };
+};
+
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
