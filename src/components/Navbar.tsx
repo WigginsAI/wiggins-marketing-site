@@ -42,7 +42,7 @@ const Navbar = () => {
             onClick={() => setContactOpen(true)}
             className="text-base font-semibold text-muted-foreground hover:text-foreground transition-colors"
           >
-            Contact
+            Contact Us
           </button>
           <ContactModal open={contactOpen} onOpenChange={setContactOpen} />
         </div>
