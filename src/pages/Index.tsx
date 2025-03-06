@@ -49,7 +49,7 @@ const Index = () => {
             <h1 
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight md:leading-tight opacity-0" 
               data-animate 
-              data-delay="240"
+              data-delay="276"
             >
               Reinventing how teams
               <br />
@@ -59,7 +59,7 @@ const Index = () => {
             <p 
               className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0" 
               data-animate 
-              data-delay="360"
+              data-delay="414"
             >
               Helping B2B teams build products customers actually want.
             </p>
@@ -67,7 +67,7 @@ const Index = () => {
             <div 
               className="pt-6 md:pt-8 opacity-0" 
               data-animate 
-              data-delay="480"
+              data-delay="552"
             >
               <EmailForm />
             </div>
