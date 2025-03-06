@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { X } from "lucide-react";
+import { X, CheckCircle } from "lucide-react";
 
 interface ContactModalProps {
   open: boolean;
@@ -39,7 +39,7 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission and then show Airtable embed
+    // Simulate form submission
     setTimeout(() => {
       console.log("Contact form submitted:", formData);
       setIsSubmitting(false);
@@ -155,38 +155,14 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
           ) : (
             <div className="text-center space-y-4 py-6">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
+                <CheckCircle className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-medium">Thanks for reaching out!</h3>
               <p className="text-base text-muted-foreground mb-4">
                 We'll get back to you shortly.
               </p>
               
-              {/* Airtable Embed */}
-              <div className="mt-4">
-                <iframe 
-                  className="airtable-embed" 
-                  src="https://airtable.com/embed/appSdk9KtDUQAbwLK/pagJmBniXkdvYj6rl/form" 
-                  frameBorder="0" 
-                  width="100%" 
-                  height="533" 
-                  style={{ background: "transparent", border: "1px solid #ccc" }}
-                  title="Contact Form"
-                ></iframe>
-              </div>
+              {/* Removed Airtable Embed */}
             </div>
           )}
         </div>
