@@ -8,17 +8,17 @@ const AnimatedBackground = () => {
       <div className="absolute inset-0 grid-pattern opacity-20 animate-grid-line"></div>
       
       {/* Gradient Orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full filter blur-[100px] animate-pulse-slow"></div>
-      <div className="absolute top-1/2 -right-32 w-96 h-96 bg-blue-400/5 rounded-full filter blur-[100px] animate-pulse-slow" style={{ animationDelay: "2s" }}></div>
-      <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-indigo-500/5 rounded-full filter blur-[80px] animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-fuchsia-500/10 rounded-full filter blur-[100px] animate-pulse-slow"></div>
+      <div className="absolute top-1/2 -right-32 w-96 h-96 bg-purple-400/5 rounded-full filter blur-[100px] animate-pulse-slow" style={{ animationDelay: "2s" }}></div>
+      <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-pink-500/5 rounded-full filter blur-[80px] animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
       
       {/* Animated Lines */}
       <svg width="100%" height="100%" className="absolute inset-0 opacity-20">
         <defs>
           <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#60A5FA" stopOpacity="0" />
-            <stop offset="50%" stopColor="#60A5FA" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#60A5FA" stopOpacity="0" />
+            <stop offset="0%" stopColor="#D946EF" stopOpacity="0" />
+            <stop offset="50%" stopColor="#D946EF" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#D946EF" stopOpacity="0" />
           </linearGradient>
         </defs>
         <line
