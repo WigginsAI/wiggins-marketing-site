@@ -32,7 +32,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <div className="text-xl font-semibold tracking-tight">
+          <div className="text-2xl font-bold tracking-tight">
             <span className="text-gradient">WiggsAI</span>
           </div>
         </div>
@@ -40,7 +40,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <button 
             onClick={() => setContactOpen(true)}
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="text-base font-semibold text-muted-foreground hover:text-foreground transition-colors"
           >
             Contact
           </button>
