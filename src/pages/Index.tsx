@@ -90,7 +90,7 @@ const Index = () => {
           </div>
           
           <div className="mt-6 text-center md:text-left">
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-[#B0B0B0]">
               © {new Date().getFullYear()} WiggsAI. All rights reserved.
             </p>
           </div>
