@@ -177,12 +177,14 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
               
               {/* Airtable Embed */}
               <div className="mt-4">
-                <iframe
-                  src="https://airtable.com/embed/your-contact-form-link" // Replace with your Airtable contact form link
-                  width="100%"
-                  height="350"
-                  style={{ background: "transparent", border: "none" }}
-                  frameBorder="0"
+                <iframe 
+                  className="airtable-embed" 
+                  src="https://airtable.com/embed/your-form-link" 
+                  frameBorder="0" 
+                  width="100%" 
+                  height="533" 
+                  style={{ background: "transparent", border: "1px solid #ccc" }}
+                  title="Contact Form"
                 ></iframe>
               </div>
             </div>
