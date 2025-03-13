@@ -32,7 +32,11 @@ cd <YOUR_PROJECT_NAME>
 # Step 3: Install the necessary dependencies.
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Create a .env.local file with your Airtable credentials
+cp .env.local.example .env.local
+# Edit .env.local with your actual Airtable credentials
+
+# Step 5: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
 
@@ -52,13 +56,26 @@ npm run dev
 
 ## What technologies are used for this project?
 
-This project is built with .
+This project is built with:
 
-- Vite
+- Next.js 14
 - TypeScript
 - React
 - shadcn-ui
 - Tailwind CSS
+- Airtable (for email subscriptions)
+
+## Environment Variables
+
+This project requires the following environment variables to be set in `.env.local`:
+
+```env
+AIRTABLE_API_KEY=your_airtable_api_key_here
+AIRTABLE_BASE_ID=your_airtable_base_id_here
+AIRTABLE_TABLE_NAME=your_table_name_here
+```
+
+Make sure to replace the placeholder values with your actual Airtable credentials.
 
 ## How can I deploy this project?
 

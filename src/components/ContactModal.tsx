@@ -1,3 +1,4 @@
+'use client';
 
 import React, { useState } from "react";
 import {
@@ -70,15 +71,7 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader className="space-y-3">
-          <div className="flex justify-between items-center">
-            <DialogTitle>Contact Us</DialogTitle>
-            <button
-              onClick={() => onOpenChange(false)}
-              className="rounded-full w-6 h-6 flex items-center justify-center hover:bg-secondary transition-colors"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          </div>
+          <DialogTitle>Contact Us</DialogTitle>
           <DialogDescription>
             Send us a message and we'll get back to you as soon as possible.
           </DialogDescription>
@@ -133,7 +126,7 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
               <DialogFooter>
                 <Button 
                   type="submit" 
-                  className="w-full"
+                  className="w-full bg-[#3C83F6] hover:bg-[#3C83F6]/90"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -168,7 +161,7 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
             </form>
           ) : (
             <div className="text-center space-y-4 py-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-2">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#3C83F6]/10 text-[#3C83F6] mb-2">
                 <CheckCircle className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-medium">Thanks for reaching out!</h3>

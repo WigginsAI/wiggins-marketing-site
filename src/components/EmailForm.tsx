@@ -1,3 +1,4 @@
+'use client';
 
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -29,12 +30,21 @@ const EmailForm = () => {
     setIsSubmitting(true);
     
     try {
-      // This would be where you'd make an actual API request to Airtable
-      // For now, we're just simulating the submission
-      console.log("Email submitted for waitlist:", email);
-      
+      // Commented out API call for testing
+      // const response = await fetch('/api/subscribe', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ email }),
+      // });
+      // const data = await response.json();
+      // if (!response.ok) {
+      //   throw new Error(data.error || 'Failed to subscribe');
+      // }
+
       // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
       setIsSubmitting(false);
       setSubmitted(true);
@@ -121,7 +131,7 @@ const EmailForm = () => {
         </form>
       ) : (
         <div className="text-center space-y-4 py-8 px-8 bg-secondary/50 rounded-md border border-border/50 animate-fade-in">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-2">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#3C83F6]/10 text-[#3C83F6] mb-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8"

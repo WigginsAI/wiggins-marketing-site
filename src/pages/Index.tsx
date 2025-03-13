@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import EmailForm from "@/components/EmailForm";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import { DialogPrimitive } from "@/components/ui/dialog";
+import { X } from "lucide-react";
 
 const Index = () => {
   // Animation logic for staggered elements

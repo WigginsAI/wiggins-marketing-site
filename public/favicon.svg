@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d946ef" />
+      <stop offset="100%" style="stop-color:#9b87f5" />
+    </linearGradient>
+  </defs>
+  <!-- Round speech bubble path with point on bottom-right -->
+  <path d="M2 16C2 8.268 8.268 2 16 2C23.732 2 30 8.268 30 16V18C30 21.314 27.314 24 24 24V26C24 27.105 23.105 28 22 28H20L24 32L16 28C8.268 28 2 21.732 2 16Z" fill="url(#gradient)"/>
+  <!-- W letter -->
+  <path d="M7 12L10 22L13 14L16 22L19 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> 
