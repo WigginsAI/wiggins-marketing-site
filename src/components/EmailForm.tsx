@@ -30,21 +30,19 @@ const EmailForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Commented out API call for testing
-      // const response = await fetch('/api/subscribe', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({ email }),
-      // });
-      // const data = await response.json();
-      // if (!response.ok) {
-      //   throw new Error(data.error || 'Failed to subscribe');
-      // }
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
 
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to subscribe');
+      }
       
       setIsSubmitting(false);
       setSubmitted(true);
@@ -53,13 +51,17 @@ const EmailForm = () => {
         title: "Success!",
         description: "You've been added to our waitlist.",
       });
-    } catch (error) {
-      console.error("Error submitting email:", error);
+    } catch (error: any) {
+      console.error("Form submission error:", {
+        message: error.message,
+        cause: error.cause,
+      });
+      
       setIsSubmitting(false);
       
       toast({
         title: "Error",
-        description: "There was a problem adding you to the waitlist. Please try again.",
+        description: error.message || "There was a problem adding you to the waitlist. Please try again.",
         variant: "destructive",
       });
     }

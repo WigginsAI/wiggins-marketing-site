@@ -41,27 +41,34 @@ const ContactModal = ({ open, onOpenChange }: ContactModalProps) => {
     setIsSubmitting(true);
 
     try {
-      // This would be where you'd make an actual API request to Airtable
-      // For now, we're just simulating the submission
-      console.log("Contact form submitted:", formData);
-      
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message');
+      }
       
       setIsSubmitting(false);
       setSubmitted(true);
       
       toast({
-        title: "Message sent",
-        description: "We'll get back to you shortly.",
+        title: "Success!",
+        description: "Your message has been sent. We'll get back to you shortly.",
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error submitting form:", error);
       setIsSubmitting(false);
       
       toast({
         title: "Error",
-        description: "There was a problem sending your message. Please try again.",
+        description: error.message || "There was a problem sending your message. Please try again.",
         variant: "destructive",
       });
     }

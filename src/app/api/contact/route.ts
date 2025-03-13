@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import Airtable from 'airtable';
 
-
 // Initialize Airtable with personal access token
 if (!process.env.AIRTABLE_ACCESS_TOKEN) {
   console.error('Server Error: AIRTABLE_ACCESS_TOKEN is not configured');
@@ -11,9 +10,16 @@ if (!process.env.AIRTABLE_BASE_ID) {
   console.error('Server Error: AIRTABLE_BASE_ID is not configured');
 }
 
-if (!process.env.AIRTABLE_TABLE_NAME) {
-  console.error('Server Error: AIRTABLE_TABLE_NAME is not configured');
+if (!process.env.AIRTABLE_CONTACT_TABLE_NAME) {
+  console.error('Server Error: AIRTABLE_CONTACT_TABLE_NAME is not configured');
 }
+
+// Log environment variables for debugging
+console.log('Contact Form Environment Variables:', {
+  accessToken: process.env.AIRTABLE_ACCESS_TOKEN ? 'exists' : 'missing',
+  baseId: process.env.AIRTABLE_BASE_ID ? 'exists' : 'missing',
+  contactTableName: process.env.AIRTABLE_CONTACT_TABLE_NAME ? 'exists' : 'missing'
+});
 
 const airtable = new Airtable({
   apiKey: process.env.AIRTABLE_ACCESS_TOKEN,
@@ -21,8 +27,7 @@ const airtable = new Airtable({
 });
 
 const base = process.env.AIRTABLE_BASE_ID ? airtable.base(process.env.AIRTABLE_BASE_ID) : null;
-const tableName = process.env.AIRTABLE_TABLE_NAME;
-const viewName = process.env.AIRTABLE_VIEW_NAME;
+const tableName = process.env.AIRTABLE_CONTACT_TABLE_NAME; // Use contact-specific table name
 const table = base ? base(tableName!) : null;
 
 export async function POST(request: Request) {
@@ -37,15 +42,15 @@ export async function POST(request: Request) {
     }
 
     // Log that the API route was hit
-    console.log('POST /api/subscribe was called');
+    console.log('POST /api/contact was called');
     
-    const { email } = await request.json();
-    console.log('Received email:', email);
+    const { name, email, message } = await request.json();
+    console.log('Received contact form data:', { name, email, message });
 
-    // Validate email
-    if (!email) {
+    // Validate required fields
+    if (!name || !email || !message) {
       return NextResponse.json(
-        { error: 'Email is required' },
+        { error: 'All fields are required' },
         { status: 400 }
       );
     }
@@ -59,26 +64,21 @@ export async function POST(request: Request) {
       );
     }
 
-    // Create record in Airtable with view option if specified
+    // Create record in Airtable
     const createOptions: any = {
       fields: {
+        "Full Name": name,
         "Email Address": email,
-        // Status: 'New',
-        // 'Signup Date': new Date().toISOString(),
+        "Message": message
       }
     };
-
-    // If a specific view is configured, use it
-    if (viewName) {
-      createOptions.view = viewName;
-    }
 
     console.log('Attempting to create record with options:', createOptions);
     await table.create([createOptions]);
     console.log('Record created successfully');
 
     return NextResponse.json(
-      { message: 'Successfully subscribed' },
+      { message: 'Message sent successfully' },
       { status: 200 }
     );
   } catch (error: any) {
@@ -91,7 +91,7 @@ export async function POST(request: Request) {
     // Send a user-friendly error message
     return NextResponse.json(
       { 
-        error: 'Failed to subscribe. Please try again later.',
+        error: 'Failed to send message. Please try again later.',
         details: error.message 
       },
       { status: 500 }
