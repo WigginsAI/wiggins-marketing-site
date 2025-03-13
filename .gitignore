@@ -1,3 +1,11 @@
+# Next.js build output
+.next
+.next/
+out/
+build/
+.vercel/
+next-env.d.ts
+
 # Logs
 logs
 *.log
@@ -30,3 +38,17 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Testing
+coverage/
+
+# Debug
+.pnpm-debug.log*
+
+# Local files
+*.local
+
+# Cache
+.cache/
+.eslintcache
+.stylelintcache
