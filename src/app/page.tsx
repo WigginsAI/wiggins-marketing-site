@@ -4,8 +4,9 @@ import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import EmailForm from "@/components/EmailForm";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import { X } from "lucide-react";
 
-export default function Home() {
+export default function Page() {
   // Animation logic for staggered elements
   useEffect(() => {
     const animatedItems = document.querySelectorAll("[data-animate]");
@@ -39,7 +40,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white">
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
       <AnimatedBackground />
       <Navbar />
       
@@ -48,17 +49,17 @@ export default function Home() {
         <div className="w-full max-w-6xl mx-auto">
           <div className="text-center space-y-4 sm:space-y-6 max-w-4xl mx-auto">
             <h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-tight sm:leading-tight md:leading-tight opacity-0" 
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-tight md:leading-tight opacity-0" 
               data-animate 
               data-delay="276"
             >
-              <span className="block sm:inline text-white">Reinventing how teams</span>
+              <span className="block sm:inline">Reinventing how teams</span>
               {" "}
               <span className="text-gradient block sm:inline">uncover customer insights</span>
             </h1>
             
             <p 
-              className="text-base sm:text-lg md:text-xl text-gray-400 max-w-sm sm:max-w-lg md:max-w-2xl mx-auto opacity-0" 
+              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-sm sm:max-w-lg md:max-w-2xl mx-auto opacity-0" 
               data-animate 
               data-delay="414"
             >
@@ -77,7 +78,7 @@ export default function Home() {
       </div>
       
       {/* Footer */}
-      <footer className="py-4 sm:py-6 border-t border-white/10">
+      <footer className="py-4 sm:py-6 border-t border-border/30">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">

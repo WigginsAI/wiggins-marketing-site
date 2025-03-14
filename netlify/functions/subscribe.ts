@@ -1,6 +1,5 @@
-import { NextResponse } from 'next/server';
+import { Handler } from '@netlify/functions';
 import Airtable from 'airtable';
-
 
 // Initialize Airtable with personal access token
 if (!process.env.AIRTABLE_ACCESS_TOKEN) {
@@ -25,46 +24,52 @@ const tableName = process.env.AIRTABLE_TABLE_NAME;
 const viewName = process.env.AIRTABLE_VIEW_NAME;
 const table = base ? base(tableName!) : null;
 
-export async function POST(request: Request) {
+export const handler: Handler = async (event) => {
+  // Only allow POST requests
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
+  }
+
   try {
     // Check if Airtable is properly configured
     if (!table) {
       console.error('Airtable is not properly configured');
-      return NextResponse.json(
-        { error: 'Server configuration error. Please contact support.' },
-        { status: 500 }
-      );
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: 'Server configuration error. Please contact support.' })
+      };
     }
 
-    // Log that the API route was hit
-    console.log('POST /api/subscribe was called');
+    // Log that the function was called
+    console.log('subscribe function was called');
     
-    const { email } = await request.json();
+    const { email } = JSON.parse(event.body || '{}');
     console.log('Received email:', email);
 
     // Validate email
     if (!email) {
-      return NextResponse.json(
-        { error: 'Email is required' },
-        { status: 400 }
-      );
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Email is required' })
+      };
     }
 
     // Email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      );
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Invalid email format' })
+      };
     }
 
     // Create record in Airtable with view option if specified
     const createOptions: any = {
       fields: {
         "Email Address": email,
-        // Status: 'New',
-        // 'Signup Date': new Date().toISOString(),
       }
     };
 
@@ -77,10 +82,10 @@ export async function POST(request: Request) {
     await table.create([createOptions]);
     console.log('Record created successfully');
 
-    return NextResponse.json(
-      { message: 'Successfully subscribed' },
-      { status: 200 }
-    );
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'Successfully subscribed' })
+    };
   } catch (error: any) {
     console.error('Error details:', {
       message: error.message,
@@ -88,13 +93,12 @@ export async function POST(request: Request) {
       stack: error.stack,
     });
 
-    // Send a user-friendly error message
-    return NextResponse.json(
-      { 
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ 
         error: 'Failed to subscribe. Please try again later.',
         details: error.message 
-      },
-      { status: 500 }
-    );
+      })
+    };
   }
-} 
+}; 

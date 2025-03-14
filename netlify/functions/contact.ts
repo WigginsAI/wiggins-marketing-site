@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { Handler } from '@netlify/functions';
 import Airtable from 'airtable';
 
 // Initialize Airtable with personal access token
@@ -27,45 +27,53 @@ const airtable = new Airtable({
 });
 
 const base = process.env.AIRTABLE_BASE_ID ? airtable.base(process.env.AIRTABLE_BASE_ID) : null;
-const tableName = process.env.AIRTABLE_CONTACT_TABLE_NAME; // Use contact-specific table name
+const tableName = process.env.AIRTABLE_CONTACT_TABLE_NAME;
 const table = base ? base(tableName!) : null;
 
-export async function POST(request: Request) {
+export const handler: Handler = async (event) => {
+  // Only allow POST requests
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
+  }
+
   try {
     // Check if Airtable is properly configured
     if (!table) {
       console.error('Airtable is not properly configured');
-      return NextResponse.json(
-        { error: 'Server configuration error. Please contact support.' },
-        { status: 500 }
-      );
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: 'Server configuration error. Please contact support.' })
+      };
     }
 
-    // Log that the API route was hit
-    console.log('POST /api/contact was called');
+    // Log that the function was called
+    console.log('contact function was called');
     
-    const { name, email, message } = await request.json();
+    const { name, email, message } = JSON.parse(event.body || '{}');
     console.log('Received contact form data:', { name, email, message });
 
     // Validate required fields
     if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: 'All fields are required' },
-        { status: 400 }
-      );
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'All fields are required' })
+      };
     }
 
     // Email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      );
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Invalid email format' })
+      };
     }
 
     // Create record in Airtable
-    const createOptions: any = {
+    const createOptions = {
       fields: {
         "Full Name": name,
         "Email Address": email,
@@ -77,10 +85,10 @@ export async function POST(request: Request) {
     await table.create([createOptions]);
     console.log('Record created successfully');
 
-    return NextResponse.json(
-      { message: 'Message sent successfully' },
-      { status: 200 }
-    );
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'Message sent successfully' })
+    };
   } catch (error: any) {
     console.error('Error details:', {
       message: error.message,
@@ -88,13 +96,12 @@ export async function POST(request: Request) {
       stack: error.stack,
     });
 
-    // Send a user-friendly error message
-    return NextResponse.json(
-      { 
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ 
         error: 'Failed to send message. Please try again later.',
         details: error.message 
-      },
-      { status: 500 }
-    );
+      })
+    };
   }
-} 
+}; 

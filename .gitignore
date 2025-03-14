@@ -51,3 +51,10 @@ coverage/
 .cache/
 .eslintcache
 .stylelintcache
+
+# Local Netlify folder
+.netlify
+
+# Netlify
+.netlify/functions-serve
+.netlify/edge-functions-serve
