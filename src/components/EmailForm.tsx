@@ -8,6 +8,7 @@ const EmailForm = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [error, setError] = useState("");
   const { toast } = useToast();
 
@@ -45,12 +46,23 @@ const EmailForm = () => {
       }
       
       setIsSubmitting(false);
-      setSubmitted(true);
+      // Small delay before showing success state
+      setTimeout(() => {
+        setSubmitted(true);
+        setIsVisible(true);
+      }, 100);
       
-      toast({
-        title: "Success!",
-        description: "You've been added to our waitlist.",
-      });
+      // First fade out after 3 seconds
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 6000);
+
+      // Then reset form after animation completes
+      setTimeout(() => {
+        setSubmitted(false);
+        setEmail("");
+      }, 7500); // Added extra time for fade out
+      
     } catch (error: any) {
       console.error("Form submission error:", {
         message: error.message,
@@ -70,7 +82,7 @@ const EmailForm = () => {
   return (
     <div className="w-full max-w-md mx-auto">
       {!submitted ? (
-        <form onSubmit={handleSubmit} className="space-y-3">
+        <form onSubmit={handleSubmit} className="space-y-3 transition-opacity duration-500 ease-in-out">
           <div className="relative">
             <input
               type="email"
@@ -132,27 +144,51 @@ const EmailForm = () => {
           </p>
         </form>
       ) : (
-        <div className="text-center space-y-4 py-8 px-8 bg-secondary/50 rounded-md border border-border/50 animate-fade-in">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#3C83F6]/10 text-[#3C83F6] mb-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </div>
-          <h3 className="text-xl font-medium">Thanks for signing up!</h3>
-          <p className="text-base text-muted-foreground">
+        <div className={cn(
+          "text-center space-y-4 py-8 px-8 relative bg-secondary/50 rounded-md transition-opacity duration-1000",
+          isVisible ? "opacity-100" : "opacity-0"
+        )}>
+          <svg className="absolute inset-0 w-full h-full" style={{ pointerEvents: 'none' }}>
+            <rect
+              width="100%"
+              height="100%"
+              rx="6"
+              className="fill-none animate-[sketch_1.5s_ease-in-out_forwards]"
+              style={{
+                stroke: 'url(#gradient)',
+                strokeWidth: '2px',
+              }}
+            />
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style={{ stopColor: '#d946ef' }} />
+                <stop offset="100%" style={{ stopColor: '#9b87f5' }} />
+              </linearGradient>
+            </defs>
+          </svg>
+          <h3 className="text-xl font-medium animate-[fadeIn_1s_ease-in-out_1.2s_forwards] opacity-0 relative z-10">
+            Thanks for signing up!
+          </h3>
+          <p className="text-base text-muted-foreground animate-[fadeIn_1s_ease-in-out_1.4s_forwards] opacity-0 relative z-10">
             We'll be in touch soon.
           </p>
+          <style jsx>{`
+            @keyframes sketch {
+              0% {
+                stroke-dasharray: 1500;
+                stroke-dashoffset: 1500;
+              }
+              100% {
+                stroke-dasharray: 1500;
+                stroke-dashoffset: 0;
+              }
+            }
+            @keyframes fadeIn {
+              to {
+                opacity: 1;
+              }
+            }
+          `}</style>
         </div>
       )}
     </div>
