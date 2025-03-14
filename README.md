@@ -114,7 +114,12 @@ cd <YOUR_PROJECT_NAME>
 npm install
 ```
 
-3. Create a `.env.local` file with your Airtable credentials:
+3. Install Netlify CLI globally:
+```sh
+npm install -g netlify-cli
+```
+
+4. Create a `.env.local` file with your Airtable credentials:
 ```env
 AIRTABLE_ACCESS_TOKEN=your_airtable_access_token
 AIRTABLE_BASE_ID=your_airtable_base_id
@@ -122,12 +127,18 @@ AIRTABLE_TABLE_NAME=your_email_subscriptions_table
 AIRTABLE_CONTACT_TABLE_NAME=your_contact_form_table
 ```
 
-4. Start the development server:
+5. Start the development server:
 ```sh
+# Option 1: Run without Netlify Functions (forms won't work)
 npm run dev
+
+# Option 2: Run with Netlify Functions (recommended)
+npm run dev:netlify
 ```
 
-The site will be available at `http://localhost:3000`.
+The site will be available at `http://localhost:8888` when using `dev:netlify`, or `http://localhost:3000` when using `dev`.
+
+> **Note**: To test the contact and subscription forms locally, you must use `npm run dev:netlify`.
 
 ## Deployment
 
