@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:netlify": "netlify dev",
+    "dev:offline": "netlify dev --offline",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
