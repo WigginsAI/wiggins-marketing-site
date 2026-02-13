@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
-import EmailForm from "@/components/EmailForm";
 import AnimatedBackground from "@/components/AnimatedBackground";
 import { X } from "lucide-react";
 
@@ -71,7 +70,6 @@ export default function Page() {
               data-animate 
               data-delay="552"
             >
-              <EmailForm />
             </div>
           </div>
         </div>
