@@ -47,23 +47,22 @@ export default function Page() {
       <div className="flex-grow flex items-center justify-center px-4 sm:px-6 py-8 sm:py-12 md:py-16">
         <div className="w-full max-w-6xl mx-auto">
           <div className="text-center space-y-4 sm:space-y-6 max-w-4xl mx-auto">
-            <h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-tight md:leading-tight opacity-0" 
-              data-animate 
-              data-delay="276"
-            >
-              <span className="block sm:inline">Reinventing how teams</span>
-              {" "}
-              <span className="text-gradient block sm:inline">uncover customer insights</span>
-            </h1>
-            
-            <p 
-              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-sm sm:max-w-lg md:max-w-2xl mx-auto opacity-0" 
-              data-animate 
-              data-delay="414"
-            >
-              Helping B2B teams build products their customers actually want.
-            </p>
+<h1
+  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight sm:leading-tight md:leading-tight opacity-0"
+  data-animate
+  data-delay="276"
+>
+  WiggsAI
+</h1>
+
+<p
+  className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-sm sm:max-w-lg md:max-w-2xl mx-auto opacity-0"
+  data-animate
+  data-delay="414"
+>
+  Thank you to the teams who partnered with us during our early journey.
+</p>
+
             
             <div 
               className="pt-4 sm:pt-6 md:pt-8 opacity-0" 
